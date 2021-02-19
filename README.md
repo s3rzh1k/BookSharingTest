@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You need to install 'react-router-dom', 'node-sass' to run this project!
 
 ## Available Scripts
 
