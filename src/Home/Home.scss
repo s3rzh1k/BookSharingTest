@@ -1,0 +1,28 @@
+.Home {
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  &--uppertext {
+    font-size: 27px;
+    color: black;
+    font-weight: 700;
+    margin: 0 auto;
+  }
+  &--lowertext {
+    font-size: 45px;
+    color: black;
+    font-weight: 700;
+    width: 100%;
+    margin: 0 auto;
+  }
+  &--text {
+    font-style: italic;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+}
