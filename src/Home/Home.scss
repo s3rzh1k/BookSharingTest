@@ -7,13 +7,13 @@
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  &--uppertext {
+  &--upperHeader {
     font-size: 27px;
     color: black;
     font-weight: 700;
     margin: 0 auto;
   }
-  &--lowertext {
+  &--lowerHeader {
     font-size: 45px;
     color: black;
     font-weight: 700;
@@ -23,6 +23,9 @@
   &--text {
     font-style: italic;
     font-size: 15px;
-    margin-top: 10px;
+    margin: 10px 0;
+  }
+  &--button {
+    margin-top: 5px;
   }
 }

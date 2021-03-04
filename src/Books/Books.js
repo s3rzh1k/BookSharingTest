@@ -1,6 +1,5 @@
 import React from 'react'
 import './Books.scss'
-import './../Owners/Owners.scss'
 import Book from './Book/Book'
 
 export default class Books extends React.Component {
@@ -40,7 +39,7 @@ export default class Books extends React.Component {
                     <div className="Finder">
                         <input type="text" placeholder={'Поиск'} onInput={(event) => {
                             if (event.target.value !== '') {
-                                this.sorted.select = this.state.select.filter(item => item.name.toLowerCase().indexOf(event.target.value.toLowerCase(), 0) !== -1)
+                                this.sorted.select = this.sorted.select.filter(item => item.name.toLowerCase().indexOf(event.target.value.toLowerCase(), 0) !== -1)
                                 this.setState (this.state)
                             }
                             else {
@@ -53,13 +52,8 @@ export default class Books extends React.Component {
                 </div>
                 {
                     this.sorted.select.map((book, index)=> {
-                        let own = this.state.owners[book.taken-1]
-                        let books = []
-                        for (let i=0; i<own.books.length; i++) {
-                            books.push(this.state.select[own.books[i]-1])
-                        }
                         return(
-                            <Book name={book.name} author={book.author} year={book.year} img={book.img} description={book.description} taken={own} books={books}/>
+                            <Book key={index} id={book.id}/>
                         )
                     })
                 }

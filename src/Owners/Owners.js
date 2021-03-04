@@ -1,5 +1,4 @@
 import React from 'react'
-import './Owners.scss'
 import Owner from './Owner/Owner'
 import './../Books/Books.scss'
 
@@ -7,7 +6,6 @@ export default class Owners extends React.Component {
     constructor(props) {
         super(props)
         this.sorted = JSON.parse(JSON.stringify(props.state))
-        let own = props.state.owners.slice()
         this.state = props.state
     }
 
@@ -41,7 +39,7 @@ export default class Owners extends React.Component {
                     <div className="Finder">
                         <input type="text" placeholder={'Поиск по фамилии'} onInput={(event) => {
                             if (event.target.value !== '') {
-                                this.sorted.owners = this.state.owners.filter(item => item.surname.toLowerCase().indexOf(event.target.value.toLowerCase(), 0) !== -1)
+                                this.sorted.owners = this.sorted.owners.filter(item => item.surname.toLowerCase().indexOf(event.target.value.toLowerCase(), 0) !== -1)
                                 this.setState (this.state)
                             }
                             else {
@@ -53,12 +51,8 @@ export default class Owners extends React.Component {
                     </div>
                 </div>
                 {this.sorted.owners.map((owner, index) => {
-                    let books = []
-                    for (let i=0; i<owner.books.length; i++) {
-                        books.push(this.state.select[owner.books[i]-1])
-                    }
                     return(
-                        <Owner img={owner.img} name={owner.name} surname={owner.surname} books={books} {...this.props} />
+                        <Owner key={index} id={owner.id}/>
                     )
                 })}
             </div>

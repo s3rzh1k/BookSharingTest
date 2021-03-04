@@ -1,42 +1,37 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import './Book.scss'
-import {withRouter, NavLink} from 'react-router-dom'
-
+import {withRouter} from 'react-router-dom'
+import {AppContext} from '../../App'
+import Rating from './Rating/Rating'
 const Book = props => {
 
-
+    const value = useContext(AppContext)
+    const book = value.select[props.id-1]
     return(
     <div className="Book">
         <div className={'Book--header'}>
-            <img src={props.img} alt="" className={'Book--img'}/>
+            <img src={book.img} alt="" className={'Book--img'}/>
             <div className={'Book--description'}>
                 <div className="Book--name">
-                    {props.name}
+                    {book.name}
                 </div>
                 <div className="Book--author">
-                    {props.author}
+                    {book.author}
                 </div>
                 <div className="Book--year">
-                    {props.year}
+                    {book.year}
                 </div>
             </div>
         </div>
+        <Rating id={book.id}/>
         <div className="Book--padding">
             Подробнее
             <div className={'Book--block'}>
                 <div className="Book--text">
-                    {props.description}
+                    {book.description}
                 </div>
-                <div className="Book--taken" onClick={() => props.history.push({
-                    pathname: "/person",
-                    state: {
-                        name: props.taken.name,
-                        surname: props.taken.surname,
-                        img: props.taken.img,
-                        books: props.books
-                    }
-                })}>
-                    Владелец: {props.taken.name} {props.taken.surname}
+                <div className="Book--taken" onClick={() => props.history.push('/owners/'+value.owners[book.taken-1].id)}>
+                    Владелец: {value.owners[book.taken-1].name} {value.owners[book.taken-1].surname}
                 </div>
             </div>
         </div>
@@ -45,3 +40,5 @@ const Book = props => {
 }
 
 export default withRouter(Book)
+
+
